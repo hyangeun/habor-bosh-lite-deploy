@@ -301,7 +301,7 @@ uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
 
 
 # <div id='3'/> Step 3: Deploy
-# <div id='3.1'> 3.1. Bosh Deploy
+# <div id='3.1'/> 3.1. Bosh Deploy
 
  해당 설치 가이드는 Virtual Box 설치 없이 OpenStack VM(Virtual Machine) 에서 Bosh-lite 을 설치합니다.
 VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bosh.io/docs/quick-start/ 가이드를 통해 설치하세요. 
