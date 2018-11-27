@@ -152,84 +152,65 @@
 ### 1.5.3. 보안 그룹 및 규칙 생성 
 <table>
   <tr>
-    <th>Type</th><th>Protocol</th><th>Port Range</th><th>Source</th><th>Purpose</th>
+    <th>Type</th>
+    <th>Protocol</th>
+    <th>Port Range</th>
+    <th>Source</th>
   </tr>
   <tr>
-    <td>SSH</td>
     <td>TCP</td>
     <td>22</td>
     <td>0.0.0.0/0</td>
-    <td>SSH (if Registry is used</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>6868</td>
     <td>0.0.0.0/0</td>
-    <td>Agent for bootstrapping</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>25555</td>
     <td><IP you run bosh CLI from></td>
-    <td>Director API</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>8443</td>
     <td>0.0.0.0/0</td>
-    <td>UAA API (if UAA is used)</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>443</td>
     <td>0.0.0.0/0</td>
-    <td>-</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>8844</td>
     <td>0.0.0.0/0</td>
-    <td>CredHub API (if CredHub is used)</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>4222</td>
     <td>0.0.0.0/0</td>
-    <td>NATS</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>25250</td>
     <td>0.0.0.0/0</td>
-    <td>Blobstore</td>
   </tr>
   <tr>
-    <td>Custom TCP Rule</td>
     <td>TCP</td>
     <td>25777</td>
     <td>0.0.0.0/0</td>
-    <td>Registry if enabled</td>
   </tr>
   <tr>
-    <td>All ICMP Rule</td>
     <td>ICMP</td>
     <td>1-65535</td>
     <td>0.0.0.0/0</td>
-    <td>-</td>
   </tr>
   <tr>
-    <td>All ICMP Rule</td>
     <td>TCP</td>
     <td>1-65535</td>
     <td>bosh-security</td>
-    <td>All</td>
   </tr>
 </table>
 
