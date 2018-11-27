@@ -155,7 +155,6 @@
     <th>Type</th>
     <th>Protocol</th>
     <th>Port Range</th>
-    <th>Source</th>
   </tr>
   <tr>
     <td>TCP</td>
@@ -363,7 +362,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
      
   
  
- # <div id='3.2'> 3.2. CF Deploy
+ # <div id='3.2'/> 3.2. CF Deploy
  
  - cf-deployment clone(branch v4.0.0)
         
