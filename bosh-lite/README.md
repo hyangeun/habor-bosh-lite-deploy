@@ -277,6 +277,7 @@ uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
 ### 2.3.2. uaac 설치
 
     $ gem install cf-uaac
+    
 > 참고 자료: https://github.com/cloudfoundry/cf-uaac.git
 
 
@@ -361,8 +362,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
          $ sudo route add -net 192.168.40.0 gw 10.20.1.254
      
   
- 
- # <div id='3.2'/> 3.2. CF Deploy
+# <div id='3.2'/> 3.2. CF Deploy
  
  - cf-deployment clone(branch v4.0.0)
         
