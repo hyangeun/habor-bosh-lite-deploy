@@ -245,10 +245,7 @@
      $ chmod 600 ~/.ssh/bosh.pem  
      
      
-     
-     
-## Step 2: Prepare to install cli for BOSH & CF
-# <div id='2'/> 2. Installing the CLI
+# <div id='2'/>Step 2: Prepare to install cli for BOSH & CF
 # <div id='2.1'/> 2.1. BOSH CLI 설치 
  1. Navigate to the BOSH CLI GitHub release page and choose the correct download for your operating system.
  2. Make the bosh binary executable and move the binary to your PATH: 	
@@ -288,8 +285,7 @@
 
 > 참고자료 : https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
 # <div id='2.3'/> 2.3. CF-Uaac CLI 설치 
-### 2.3.1. Prerequisites
-### rvm 설치
+### 2.3.1. rvm 설치
 uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
 
     $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -303,9 +299,7 @@ uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
     $ gem install cf-uaac
 > 참고 자료: https://github.com/cloudfoundry/cf-uaac.git
 
-## Step 3: Deploy
-#< div id='3'/> 3.Deploy
-
+#< div id='3'/> Step 3: Deploy
 # <div id='3.1'> 3.1. Bosh Deploy
 해당 설치 가이드는 Virtual Box 설치 없이 OpenStack VM(Virtual Machine) 에서 Bosh-lite 을 설치합니다.
 VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bosh.io/docs/quick-start/ 가이드를 통해 설치하세요. 
