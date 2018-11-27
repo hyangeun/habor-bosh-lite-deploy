@@ -169,7 +169,7 @@
   <tr>
     <td>TCP</td>
     <td>25555</td>
-    <td><IP you run bosh CLI from></td>
+    <td>IP you run bosh CLI from</td>
   </tr>
   <tr>
     <td>TCP</td>
