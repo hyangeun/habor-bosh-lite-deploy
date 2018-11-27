@@ -1,6 +1,6 @@
-##Openstack Bosh-lite & CF 설치 가이드
+# Openstack Bosh-lite & CF 설치 가이드
 
-####Table of Contents
+### Table of Contents
 1. [환경 구성 및 릴리즈 정보](#1)
     * 1.1. [설치 전 환경 구성](#1.1)
     * 1.2. [BOSH Releases](#1.2)
@@ -17,10 +17,10 @@
     * 3.1. [BOSH Deploy](#3.1)
     * 3.2. [CF Deploy](#3.2)
 
-##Step 1: Prepare an OpenStack environment
-### <div id='1'/> 1. Installing the CLI
+## Step 1: Prepare an OpenStack environment
+###<div id='1'/> 1. Installing the CLI
 본 가이드는 Openstack 클라우드 환경으로 Cloud Foundry의 Document를 참고로 작성하였다.
-###<div id='1.1'/>1.1. 환경 구성
+#<div id='1.1'/>1.1. 환경 구성
 <table>
   <tr>
     <td>Operating System</td>
@@ -32,7 +32,7 @@
   </tr>
 </table>
 
-###<div id='1.2'/>1.2. Bosh Releases
+#<div id='1.2'/>1.2. Bosh Releases
 <table>
   <tr>
     <th>릴리즈 명</th>
@@ -56,7 +56,8 @@
   </tr>
 </table>
 
-###<div id='1.3'/>1.3. CF Releases
+#<div id='1.3'/>1.3. CF Releases
+
 <table>
   <tr>
     <th>릴리즈 명</th>
@@ -90,7 +91,7 @@
   </tr>
 </table>
 
-###<div id='1.4'/>1.4. CF BuildPacks
+#<div id='1.4'/>1.4. CF BuildPacks
 <table>
   <tr>
     <th>빌드팩 명</th>
@@ -127,7 +128,7 @@
 
 #<div id='1.5'/>1.5. Prepare an Openstack Environment
 
-###1.5.1. 사용자 및 프로젝트 생성
+### 1.5.1. 사용자 및 프로젝트 생성
  - 관리자 권한이 있는 사용자로 오픈스택 대시보스 화면에 로그인한다. 
  - 오픈스택 대시보드 화면에서 사용자를 생성한다.
  - 오픈스택 대시보드 화면에서 프로젝트를 생성한다.<br> 
@@ -135,7 +136,7 @@
   
      ![img01](./images/openstack_01.png )
 
-###1.5.2. 네트워크 구성 
+### 1.5.2. 네트워크 구성 
  - internal/public 라우터를 생성한다.
    
       ![img02](./images/openstack_02.png )
@@ -149,7 +150,7 @@
  
       ![img04](./images/openstack_04.png )
       
-###1.5.3. 보안 그룹 및 규칙 생성 
+### 1.5.3. 보안 그룹 및 규칙 생성 
 
 <table>
   <tr>
@@ -234,7 +235,7 @@
   </tr>
 </table>
 
-###1.5.4. Keypair 생성
+### 1.5.4. Keypair 생성
  - 메뉴 프로젝트 > Compute > Key Pair 화면에서 Key Pair 를 생성한다.
  
      ![img05](./images/openstack_06.png )
@@ -246,9 +247,9 @@
      
      
      
-##Step 2: Prepare to install cli for BOSH & CF
-### <div id='2'/> 2. Installing the CLI
-### <div id='2.1'/> 2.1. BOSH CLI 설치 
+## Step 2: Prepare to install cli for BOSH & CF
+#<div id='2'/> 2. Installing the CLI
+#<div id='2.1'/> 2.1. BOSH CLI 설치 
  1. Navigate to the BOSH CLI GitHub release page and choose the correct download for your operating system.
  2. Make the bosh binary executable and move the binary to your PATH: 	
     
@@ -268,9 +269,9 @@
         
 > 참고 자료: https://bosh.io/docs/cli-v2-install/
         
-#### <div id='2.2'/> 2.2. CF CLI 설치 
+#<div id='2.2'/> 2.2. CF CLI 설치 
 
-###Linux Installation
+### Linux Installation
  For Debian and Ubuntu-based Linux distributions, perform the following steps:
   1. Add the Cloud Foundry Foundation public key and package repository to your system:
  
@@ -286,7 +287,7 @@
         $ sudo apt-get install cf-cli
 
 > 참고자료 : https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
-### <div id='2.3'/> 2.3. CF-Uaac CLI 설치 
+#<div id='2.3'/> 2.3. CF-Uaac CLI 설치 
 ### 2.3.1. Prerequisites
 ### rvm 설치
 uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
@@ -302,10 +303,10 @@ uaac를 설치하기 전에 rvm이 설치되어있는지 확인한다.
     $ gem install cf-uaac
 > 참고 자료: https://github.com/cloudfoundry/cf-uaac.git
 
-##Step 3: Deploy
-###<div id='3'/> 3.Deploy
+## Step 3: Deploy
+#<div id='3'/> 3.Deploy
 
-###<div id='3.1'> 3.1. Bosh Deploy
+##div id='3.1'> 3.1. Bosh Deploy
 해당 설치 가이드는 Virtual Box 설치 없이 OpenStack VM(Virtual Machine) 에서 Bosh-lite 을 설치합니다.
 VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bosh.io/docs/quick-start/ 가이드를 통해 설치하세요. 
 
@@ -385,7 +386,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
      
   
  
- ###<div id='3.2'> 3.2. CF Deploy
+ #<div id='3.2'> 3.2. CF Deploy
  
  - cf-deployment clone(branch v4.0.0)
         
