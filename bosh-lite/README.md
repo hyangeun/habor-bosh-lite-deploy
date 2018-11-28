@@ -342,15 +342,15 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
   
   - Connect to the Director
     
-         # Configure local alias
-         bosh alias-env bosh -e  10.20.1.30 --ca-cert <(bosh int /home/ubuntu/workspace/bosh/creds.yml --path /director_ssl/ca)
+            # Configure local alias
+            bosh alias-env bosh -e  10.20.1.30 --ca-cert <(bosh int /home/ubuntu/workspace/bosh/creds.yml --path /director_ssl/ca)
+         
+            # Log in to the Director
+            export BOSH_CLIENT=admin
+            export BOSH_CLIENT_SECRET=`bosh int /home/ubuntu/workspace/bosh/creds.yml --path /admin_password`
         
-         # Log in to the Director
-         export BOSH_CLIENT=admin
-         export BOSH_CLIENT_SECRET=`bosh int /home/ubuntu/workspace/bosh/creds.yml --path /admin_password`
-        
-         # Query the Director for more info
-         bosh -e bosh env
+            # Query the Director for more info
+            bosh -e bosh env
          
   - UAA Login
         
@@ -362,9 +362,9 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
      
   - bosh Director ssh 접속
        
-        $ bosh int creds.yml --path /jumpbox_ssh/private_key > jumpbox.key
-        $ chmod 600 jumpbox.key
-        $ ssh jumpbox@10.20.1.30 -i jumpbox.key
+          $ bosh int creds.yml --path /jumpbox_ssh/private_key > jumpbox.key
+          $ chmod 600 jumpbox.key
+          $ ssh jumpbox@10.20.1.30 -i jumpbox.key
  
 
   - bosh Director VM에 route 추가
@@ -462,7 +462,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
   
   - update-cloud-config 명령어 수행
     
-         $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-cloud.yml
+            $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-cloud.yml
      
  - cf deploy
  

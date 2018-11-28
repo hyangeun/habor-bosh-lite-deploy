@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e983a2d9-ed45-4d72-a4f6-6251cca04e9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Harbor/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/DEPLOY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/manifests/lite-vars-file.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/manifests/lite-vars-file.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bosh-lite/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bosh-lite/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +23,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="md" value="6" />
+          <entry key="md" value="8" />
           <entry key="png" value="1" />
           <entry key="yml" value="2" />
         </counts>
@@ -33,19 +31,19 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="Markdown" value="6" />
+          <entry key="Markdown" value="8" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="11708" />
+          <entry key="md" value="11739" />
           <entry key="yml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Markdown" value="11708" />
+          <entry key="Markdown" value="11739" />
           <entry key="YAML" value="14" />
         </counts>
       </usages-collector>
@@ -54,11 +52,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bosh-lite/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="425">
+                <caret line="464" column="8" selection-start-line="464" selection-start-column="8" selection-end-line="464" selection-end-column="8" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="650">
-                <caret line="62" column="100" lean-forward="true" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
+              <first_editor relative-caret-position="285">
+                <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
               </first_editor>
               <second_editor />
             </state>
@@ -102,11 +112,11 @@
       <list>
         <option value="$PROJECT_DIR$/Harbor/README.md" />
         <option value="$PROJECT_DIR$/cf-mysql-deploy/README.md" />
-        <option value="$PROJECT_DIR$/bosh-lite/README.md" />
         <option value="$PROJECT_DIR$/bosh-lite/cf-mysql-deploy/README.md" />
         <option value="$PROJECT_DIR$/bosh-lite/cf-redis/README.md" />
         <option value="$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/manifests/lite-vars-file.yml" />
         <option value="$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/README.md" />
+        <option value="$PROJECT_DIR$/bosh-lite/README.md" />
       </list>
     </option>
   </component>
@@ -144,26 +154,6 @@
               <item name="Install_Readme" type="b2602c69:ProjectViewProjectNode" />
               <item name="Install_Readme" type="462c0819:PsiDirectoryNode" />
               <item name="bosh-lite" type="462c0819:PsiDirectoryNode" />
-              <item name="cf-rabbitmq-deploy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Install_Readme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Install_Readme" type="462c0819:PsiDirectoryNode" />
-              <item name="bosh-lite" type="462c0819:PsiDirectoryNode" />
-              <item name="cf-rabbitmq-deploy" type="462c0819:PsiDirectoryNode" />
-              <item name="manifests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Install_Readme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Install_Readme" type="462c0819:PsiDirectoryNode" />
-              <item name="bosh-lite" type="462c0819:PsiDirectoryNode" />
-              <item name="cf-rabbitmq-deploy" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Install_Readme" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Install_Readme" type="462c0819:PsiDirectoryNode" />
-              <item name="bosh-lite" type="462c0819:PsiDirectoryNode" />
               <item name="cf-redis" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -178,7 +168,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/heunji/workspace/Install_Readme/bosh-lite/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543394860212" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543396995617" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -219,12 +209,12 @@
       <workItem from="1543218771197" duration="2547000" />
       <workItem from="1543224550837" duration="15000" />
       <workItem from="1543276796195" duration="21995000" />
-      <workItem from="1543362319458" duration="18245000" />
+      <workItem from="1543362319458" duration="19371000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45195000" />
+    <option name="totallyTimeSpent" value="46321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
@@ -236,7 +226,7 @@
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Learn" order="6" />
+      <window_info id="Learn" order="6" weight="0.32977587" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -280,16 +270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bosh-lite/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="409">
-            <caret line="295" column="41" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="41" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bosh-lite/cf-mysql-deploy/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -317,11 +297,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bosh-lite/cf-rabbitmq-deploy/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="650">
-            <caret line="62" column="100" lean-forward="true" selection-start-line="62" selection-start-column="100" selection-end-line="62" selection-end-column="100" />
+          <first_editor relative-caret-position="285">
+            <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bosh-lite/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="425">
+            <caret line="464" column="8" selection-start-line="464" selection-start-column="8" selection-end-line="464" selection-end-column="8" />
           </first_editor>
           <second_editor />
         </state>
