@@ -75,8 +75,8 @@
         <entry file="file://$PROJECT_DIR$/bosh-lite/cf-redis/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="260">
-                <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+              <first_editor relative-caret-position="230">
+                <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
               </first_editor>
               <second_editor />
             </state>
@@ -180,7 +180,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/heunji/workspace/Install_Readme/bosh-lite/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543390790739" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543390850266" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -221,12 +221,12 @@
       <workItem from="1543218771197" duration="2547000" />
       <workItem from="1543224550837" duration="15000" />
       <workItem from="1543276796195" duration="21995000" />
-      <workItem from="1543362319458" duration="15643000" />
+      <workItem from="1543362319458" duration="15702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42593000" />
+    <option name="totallyTimeSpent" value="42652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
@@ -305,8 +305,8 @@
     <entry file="file://$PROJECT_DIR$/bosh-lite/cf-redis/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="260">
-            <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+          <first_editor relative-caret-position="230">
+            <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
           </first_editor>
           <second_editor />
         </state>

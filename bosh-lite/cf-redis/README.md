@@ -14,7 +14,7 @@
   </tr>
   <tr>
     <td>cf-redis</td>
-    <td></td>
+    <td>434.0.25</td>
   </tr>
   <tr>
     <td>routing</td>
