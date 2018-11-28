@@ -51,29 +51,29 @@
   
 - default-vars.yml 수정
       
-              $ vi bosh-lite/default-vars.yml
+             $ vi bosh-lite/default-vars.yml
               
-              ---
-              cf_mysql_external_host: p-mysql.{domain}
-              cf_mysql_host: msxpert.co.kr
-              cf_admin_password: {cf admin password}
-              cf_api_url: https://api.{domain}
-              cf_skip_ssl_validation: true
-              proxy_vm_extension: mysql-proxy-lb
+             ---
+             cf_mysql_external_host: p-mysql.{domain}
+             cf_mysql_host: msxpert.co.kr
+             cf_admin_password: {cf admin password}
+             cf_api_url: https://api.{domain}
+             cf_skip_ssl_validation: true
+             proxy_vm_extension: mysql-proxy-lb
   
 - scripts/deploy-cf-mysql-to-bosh-lite 수정
     - 해당 스크립트에 --vars-store mysql-vars.yml 내용을 추가한다.
     
-           pushd "${root_dir}" > /dev/null
-             bosh -e bosh-lite \
-               deploy \
-               "${root_dir}/cf-mysql-deployment.yml" \
-               -o "${root_dir}/operations/bosh-lite.yml" \
-               -o "${root_dir}/operations/latest-versions.yml" \
-               -l "${root_dir}/bosh-lite/default-vars.yml" \
-               <b>--vars-store mysql-vars.yml</b> \
-               --no-redact \
-               "$@"
+             pushd "${root_dir}" > /dev/null
+               bosh -e bosh-lite \
+                 deploy \
+                 "${root_dir}/cf-mysql-deployment.yml" \
+                 -o "${root_dir}/operations/bosh-lite.yml" \
+                 -o "${root_dir}/operations/latest-versions.yml" \
+                 -l "${root_dir}/bosh-lite/default-vars.yml" \
+                 --vars-store mysql-vars.yml \
+                 --no-redact \
+                 "$@"
                
 - deploy-cf-mysql-with-broker-to-bosh-lite 스크립트 실행
      
@@ -113,26 +113,26 @@
 
 - Add the rule to a file in the following json format; multiple rules are supported.
 
-            $ vi rule.json
+          $ vi rule.json
 
-           [
-             {
-               "destination": "10.20.1.1-10.20.1.255",
-               "protocol": "all"
-              },
-             {
-               "destination": "10.20.3.1-10.10.3.255",
-               "protocol": "all"
-              },
-             {
-               "destination": "10.20.5.1-10.20.5.255",
-               "protocol": "all"
-              }
-           ]
+          [
+            {
+              "destination": "10.20.1.1-10.20.1.255",
+              "protocol": "all"
+            },
+            {
+              "destination": "10.20.3.1-10.10.3.255",
+              "protocol": "all"
+            },
+            {
+              "destination": "10.20.5.1-10.20.5.255",
+              "protocol": "all"
+            }
+          ]
        
 - Create a security group from the rule file.
   
-         $ cf create-security-group p-mysql rule.json
+        $ cf create-security-group p-mysql rule.json
       
       
 - Enable the rule for all apps
