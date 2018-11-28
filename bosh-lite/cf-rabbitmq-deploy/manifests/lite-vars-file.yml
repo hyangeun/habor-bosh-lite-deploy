@@ -23,8 +23,8 @@ rabbitmq-hosts: p-rabbitmq.msxpert.co.kr
 syslog-port: 8081
 syslog-host: 10.20.5.126
 
-cf-admin-password: admin
-cf-admin-username: hp0fryu1sag5x0knxlxt
+cf-admin-password: * 필수 입력
+cf-admin-username: admin
 
 cluster-partition-handling-strategy: autoheal
 disk_alarm_threshold: "{mem_relative,0.4}"
