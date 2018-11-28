@@ -161,14 +161,14 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 3. Configure harbor.cfg;
    - harbor.cfg 파일을 편집하고 호스트 이름과 프로토콜을 업데이트하고 속성 ssl_cert 및 ssl_cert_key를 업데이트합니다.
      
-          #set hostname
-          hostname = yourdomain.com:port
-          #set ui_url_protocol
-          ui_url_protocol = https
-          ......
-          #The path of cert and key files for nginx, they are applied only the protocol is set to https 
-          ssl_cert = /data/cert/yourdomain.com.crt
-          ssl_cert_key = /data/cert/yourdomain.com.key  
+              #set hostname
+              hostname = yourdomain.com:port
+              #set ui_url_protocol
+              ui_url_protocol = https
+              ......
+              #The path of cert and key files for nginx, they are applied only the protocol is set to https 
+              ssl_cert = /data/cert/yourdomain.com.crt
+              ssl_cert_key = /data/cert/yourdomain.com.key  
    
    - <b>hostname</b> : UI 및 레지스트리 서비스에 액세스하는 데 사용되는 대상 호스트의 호스트 이름입니다. 대상 컴퓨터의 IP 주소 또는 FQDN (정규화 된 도메인 이름)이어야합니다 (예 : 192.168.1.10 또는 reg.yourdomain.com). 호스트 이름에 localhost 또는 127.0.0.1을 사용하지 마십시오. 레지스트리 서비스를 외부 클라이언트가 액세스 할 수 있어야합니다.
    - <b>ui_url_protocol</b> : 
@@ -179,14 +179,14 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 4. Run install.sh to install and start Harbor;
    - Generate configuration files for Harbor:
     
-         $ ./prepare
+           $ ./prepare
    
    - If Harbor is already running, stop and remove the existing instance. Your image data remain in the file system
      
-         $ docker-compose down -v
+           $ docker-compose down -v
    
    - Finally, restart Harbor:
        
-         $ docker-compose up -d
+           $ docker-compose up -d
          
-         $ docker login yourdomain.com
+           $ docker login yourdomain.com
