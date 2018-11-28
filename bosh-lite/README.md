@@ -221,8 +221,9 @@
      ![img05](./images/openstack_06.png )
 
  - 로컬에 다운받은 Key를 .ssh 디렉토리에 옮기고 권한을 수정한다.
-     $ mv ~/Downloads/bosh.pem ~/.ssh/.
-     $ chmod 600 ~/.ssh/bosh.pem  
+    
+         $ mv ~/Downloads/bosh.pem ~/.ssh/.
+         $ chmod 600 ~/.ssh/bosh.pem  
      
      
 # <div id='2'/>Step 2: Prepare to install cli for BOSH & CF
@@ -297,13 +298,13 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
      
  - 생성한 인스턴스에 접속하여 git에서 bosh-deployment를 가져온다.
      
-       $ ssh ubuntu@{instance floating ip}
-       $ mkdir -p workspace/bosh
-       $ git clone https://github.com/cloudfoundry/bosh-deployment.git
+          $ ssh ubuntu@{instance floating ip}
+          $ mkdir -p workspace/bosh
+          $ git clone https://github.com/cloudfoundry/bosh-deployment.git
       
  - route 추가
-  
-       $ sudo route add -net 192.168.40.0 gw 10.20.1.254
+   
+          $ sudo route add -net 192.168.40.0 gw 10.20.1.254
        
  - openstack cpi 정보에 대한 vars.yml file 생성
        
@@ -354,22 +355,22 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
          
   - UAA Login
         
-         $ bosh -e bosh login
-          > Email (): admin
-          > Password (): {bosh password}
+             $ bosh -e bosh login
+              > Email (): admin
+              > Password (): {bosh password}
           
-          Successfully authenticated with UAA
+             Successfully authenticated with UAA
      
   - bosh Director ssh 접속
        
-          $ bosh int creds.yml --path /jumpbox_ssh/private_key > jumpbox.key
-          $ chmod 600 jumpbox.key
-          $ ssh jumpbox@10.20.1.30 -i jumpbox.key
+              $ bosh int creds.yml --path /jumpbox_ssh/private_key > jumpbox.key
+              $ chmod 600 jumpbox.key
+              $ ssh jumpbox@10.20.1.30 -i jumpbox.key
  
 
   - bosh Director VM에 route 추가
     
-         $ sudo route add -net 192.168.40.0 gw 10.20.1.254
+              $ sudo route add -net 192.168.40.0 gw 10.20.1.254
      
   
 # <div id='3.2'/> 3.2. CF Deploy
@@ -459,8 +460,9 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
           network: default
           az: z1
 
+ 
   
-  - update-cloud-config 명령어 수행
+ - update-cloud-config 명령어 수행
     
             $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-cloud.yml
      
