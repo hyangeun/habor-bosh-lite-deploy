@@ -10,14 +10,14 @@
      * 3.4. [Run install.sh to install and start Harbor;  ](#3.4)
 
 
-## <div id='1'/> 1. Offline installer
+# <div id='1'/> 1. Offline installer
 Harbor 설치 방법은 online 과 offline 으로 나뉜다.<br>
  - online installer  : installer가 Docker hub를 다운로드하기 때문에 installer 크기는 매우 작다.
  - offline installer : 호스트가 인터넷에 연결되어 있지 않을 때 이 방법을 사용한다. 설치 프로그램에는 미리 빌드 된 이미지가 포함되어 크기가 크다.
  
 현재 설치된 Harbor Release 버전은 v1.6.2를 기준으로 가이드를 작성하였다.<br>
  
-## <div id='2'/> 2. Prerequisites for the target host
+# <div id='2'/> 2. Prerequisites for the target host
 
 Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 모든 Linux 배포에 배포 할 수 있습니다. 대상 호스트는 Python, Docker 및 Docker Compose가 설치되어 있어야합니다.
 
@@ -98,13 +98,13 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
   </tr>
 </table>
 
-## <div id='3'/> 3. Installation Steps
+# <div id='3'/> 3. Installation Steps
 
 설치 단계는 다음과 같이 요약됩니다.
 
 SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
  
- ### <div id='3.1'/>1. Download the installer 
+ # <div id='3.1'/>1. Download the installer 
  
  -  offline installer 바이너리 파일([release](https://storage.googleapis.com/harbor-releases/release-1.6.0/harbor-offline-installer-v1.6.2.tgz))을 다운로드 한다.
     
@@ -112,7 +112,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
       
         $ tar xvf harbor-offline-installer-1.6.2.tgz
  
- ### <div id='3.2'/> 2. https를 사용 할 경우 인증서를 생성한다.(optional) 
+ # <div id='3.2'/> 2. https를 사용 할 경우 인증서를 생성한다.(optional) 
   
  - cert 디렉토리 생성
         
@@ -165,7 +165,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
                    ├── yourdomain.com.key   <-- Server key signed by CA
                    └── ca.crt               <-- Certificate authority that signed the registry certificate
  
- ### <div id='3.3'/> 3. Configure harbor.cfg      
+ # <div id='3.3'/> 3. Configure harbor.cfg      
 
  - harbor.cfg 파일을 편집하고 호스트 이름과 프로토콜을 업데이트하고 속성 ssl_cert 및 ssl_cert_key를 업데이트합니다.
      
@@ -185,7 +185,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
    - <b>ssl_cert_key</b> : SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
   
   
- ### <div id='3.4'/> 4. Run install.sh to install and start Harbor;  
+ # <div id='3.4'/> 4. Run install.sh to install and start Harbor;  
  - Generate configuration files for Harbor:
     
              $ ./prepare
