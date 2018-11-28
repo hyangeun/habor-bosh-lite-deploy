@@ -179,14 +179,14 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 4. Run install.sh to install and start Harbor;
    - Generate configuration files for Harbor:
     
-           $ ./prepare
+             $ ./prepare
    
    - If Harbor is already running, stop and remove the existing instance. Your image data remain in the file system
      
-           $ docker-compose down -v
+             $ docker-compose down -v
    
    - Finally, restart Harbor:
        
-           $ docker-compose up -d
+             $ docker-compose up -d
          
-           $ docker login yourdomain.com
+             $ docker login yourdomain.com
