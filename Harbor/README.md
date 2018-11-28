@@ -104,7 +104,7 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 
 SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
  
- # <div id='3.1'/>1. Download the installer 
+# <div id='3.1'/> 1. Download the installer 
  
  -  offline installer 바이너리 파일([release](https://storage.googleapis.com/harbor-releases/release-1.6.0/harbor-offline-installer-v1.6.2.tgz))을 다운로드 한다.
     
@@ -112,7 +112,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
       
         $ tar xvf harbor-offline-installer-1.6.2.tgz
  
- # <div id='3.2'/> 2. https를 사용 할 경우 인증서를 생성한다.(optional) 
+# <div id='3.2'/> 2. https를 사용 할 경우 인증서를 생성한다.(optional) 
   
  - cert 디렉토리 생성
         
@@ -165,7 +165,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
                    ├── yourdomain.com.key   <-- Server key signed by CA
                    └── ca.crt               <-- Certificate authority that signed the registry certificate
  
- # <div id='3.3'/> 3. Configure harbor.cfg      
+# <div id='3.3'/> 3. Configure harbor.cfg      
 
  - harbor.cfg 파일을 편집하고 호스트 이름과 프로토콜을 업데이트하고 속성 ssl_cert 및 ssl_cert_key를 업데이트합니다.
      
@@ -185,7 +185,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
    - <b>ssl_cert_key</b> : SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
   
   
- # <div id='3.4'/> 4. Run install.sh to install and start Harbor;  
+# <div id='3.4'/> 4. Run install.sh to install and start Harbor;  
  - Generate configuration files for Harbor:
     
              $ ./prepare
