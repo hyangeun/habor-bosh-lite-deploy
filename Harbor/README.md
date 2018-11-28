@@ -98,6 +98,7 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 
 설치 단계는 다음과 같이 요약됩니다.
 
+SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
 1. Download the installer;<br/>
    
    1.1. offline installer 바이너리 파일([release](https://storage.googleapis.com/harbor-releases/release-1.6.0/harbor-offline-installer-v1.6.2.tgz))을 다운로드 한다.
@@ -106,7 +107,7 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
       
        $ tar xvf harbor-offline-installer-<version>.tgz
  
-2. https를 사용 할 경우 인증서를 생성한다.(optional)
+2. https를 사용 할 경우 인증서를 생성한다.(optional) 
    
    2.1. cert 디렉토리 생성
         
@@ -135,22 +136,22 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
                 -out yourdomain.com.csr 
                 
    2.3. 구성 및 설치
-      - Harbor에 대한 서버 인증서 및 키 구성
+   - Harbor에 대한 서버 인증서 및 키 구성
        
             $ cp yourdomain.com.crt /data/cert/
             $ cp yourdomain.com.key /data/cert/ 
 
-      - Docker에 대한 서버 인증서, 키 및 CA 구성
+   - Docker에 대한 서버 인증서, 키 및 CA 구성
             
             $ openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
       
-      - Docker 용 yourdomain.com.cert, yourdomain.com.key 및 ca.crt를 배포합니다.
+   - Docker 용 yourdomain.com.cert, yourdomain.com.key 및 ca.crt를 배포합니다.
       
             $ cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
             $ cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
             $ cp ca.crt /etc/docker/certs.d/yourdomain.com/
       
-      - 다음은 생성된 인증서 구성을 보여줍니다.
+   - 다음은 생성된 인증서 구성을 보여줍니다.
             
             /etc/docker/certs.d/
                 └── yourdomain.com:port   
