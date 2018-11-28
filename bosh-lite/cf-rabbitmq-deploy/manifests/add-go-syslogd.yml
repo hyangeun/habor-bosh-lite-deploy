@@ -1,0 +1,43 @@
+---
+- type: replace
+  path: /releases/name=go-syslog?
+  value:
+    name: go-syslogd
+    version: latest
+
+- type: replace
+  path: /instance_groups/-
+  value:
+    name: syslog-test-endpoint
+    instances: 1
+    jobs:
+      - name: go-syslogd
+        release: go-syslogd
+        properties:
+          go_syslogd:
+            syslogd:
+              format: legacy
+              port: ((syslog-port))
+            http:
+              port: 8080
+      - name: route_registrar
+        release: routing
+        consumes:
+          nats: {from: nats, deployment: cf}
+        properties:
+          route_registrar:
+            routes:
+            - name: go-syslogd-http
+              port: 8080
+              registration_interval: 20s
+              uris:
+              - go-syslogd.((system-domain))
+    azs:
+    - z1
+    instances: 1
+    networks:
+    - name: default
+      static_ips:
+      - ((syslog-host))
+    stemcell: trusty
+    vm_type: n1-standard-1
