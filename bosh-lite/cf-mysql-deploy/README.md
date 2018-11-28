@@ -51,15 +51,15 @@
   
 - default-vars.yml 수정
       
-             $ vi bosh-lite/default-vars.yml
+         $ vi bosh-lite/default-vars.yml
               
-             ---
-             cf_mysql_external_host: p-mysql.{domain}
-             cf_mysql_host: msxpert.co.kr
-             cf_admin_password: {cf admin password}
-             cf_api_url: https://api.{domain}
-             cf_skip_ssl_validation: true
-             proxy_vm_extension: mysql-proxy-lb
+         ---
+         cf_mysql_external_host: p-mysql.{domain}
+         cf_mysql_host: msxpert.co.kr
+         cf_admin_password: {cf admin password}
+         cf_api_url: https://api.{domain}
+         cf_skip_ssl_validation: true
+         proxy_vm_extension: mysql-proxy-lb
   
 - scripts/deploy-cf-mysql-to-bosh-lite 수정
     - 해당 스크립트에 --vars-store mysql-vars.yml 내용을 추가한다.
