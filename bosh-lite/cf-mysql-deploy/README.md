@@ -42,7 +42,10 @@
 # <div id='2'/>2. Deploy
 
 - cf-mysql-deployment clone
-  
+        
+        $ mkdir -p ~/workspace/services
+        $ cd ~/workspace/services
+        
         $ git clone https://github.com/cloudfoundry/cf-mysql-deployment.git
 
 - update-cloud-config
