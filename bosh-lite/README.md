@@ -56,6 +56,8 @@
   </tr>
 </table>
 
+
+
 # <div id='1.3'/>1.3. CF Releases
 <table>
   <tr>
@@ -332,6 +334,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
         -o bosh-deployment/openstack/cpi.yml \
         -o bosh-deployment/bosh-lite.yml \
         -o bosh-deployment/bosh-lite-runc.yml \
+        -o bosh-deployment/uaa.yml \
         -o bosh-deployment/credhub.yml \
         -o bosh-deployment/jumpbox-user.yml
   
@@ -348,7 +351,14 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
         
          # Query the Director for more info
          bosh -e bosh env
-
+         
+  - UAA Login
+        
+         $ bosh -e bosh login
+          > Email (): admin
+          > Password (): {bosh password}
+          
+          Successfully authenticated with UAA
      
   - bosh Director ssh 접속
        
