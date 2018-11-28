@@ -46,16 +46,16 @@
 
 - cf-redis-release clone
     
-          $ mkdir -p ~/workspace/services
-          $ cd ~/workspace/services
+        $ mkdir -p ~/workspace/services
+        $ cd ~/workspace/services
         
-          $ git clone https://github.com/pivotal-cf/cf-redis-release
-          $ cd ~/workspace/services/cf-redis-release
-          $ git submodule update --init --recursive
+        $ git clone https://github.com/pivotal-cf/cf-redis-release
+        $ cd ~/workspace/services/cf-redis-release
+        $ git submodule update --init --recursive
         
 - edit vars.yml for cf-redis 
  
-          $ vi manifest/vars-lite.yml
+        $ vi manifest/vars-lite.yml
         
             ---
             deployment_name: cf-redis  # name of your cf-redis deployment e.g. `cf-redis`
@@ -87,17 +87,17 @@
 
 - update-cloud-config
         
-          $ bosh -e bosh ucc cloud-config.yml
+        $ bosh -e bosh ucc cloud-config.yml
         
 - cf-redis deploy
  
-          $ bosh -e bosh-lite -d cf-redis deploy manifest/deployment.yml \
+        $ bosh -e bosh-lite -d cf-redis deploy manifest/deployment.yml \
            --vars-file manifest/vars-lite.yml
            
 - service-broker 등록           
            
-          $ cf create-service-broker cf-redis-broker admin redis-secret http://cf-redis-broker.msxpert.co.kr
+        $ cf create-service-broker cf-redis-broker admin redis-secret http://cf-redis-broker.msxpert.co.kr
                
 - 서비스 접근 등록
     
-         $ cf enable-service-access p-redis
+        $ cf enable-service-access p-redis
