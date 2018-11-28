@@ -105,8 +105,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
 
    1.2.  패키지를 추출하려면 tar 명령을 사용하십시오.
       
-       $ tar xvf harbor-offline-installer-<version>.tgz
- 
+       $ tar xvf harbor-offline-installer-<version>.tgz 
 2. https를 사용 할 경우 인증서를 생성한다.(optional) 
    
    2.1. cert 디렉토리 생성
