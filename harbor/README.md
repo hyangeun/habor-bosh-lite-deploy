@@ -194,3 +194,46 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
          $ docker-compose up -d
          
          $ docker login yourdomain.com
+         
+         
+         
+#### 5. Set Haproxy
+
+- Haproxy 설치
+  
+            sudo apt-get -y install haproxy
+
+- harbor에 접속할 인증서 업데이트
+  
+            #harbor/common/config/nginx/cert 위치에 있는 cert키를 복사하여 haproxy를 설정 할 vm에 복사
+            $sudo vi /usr/local/share/ca-certificates/server.crt
+            #haproxy vm에 인증서 업데이트
+            $sudo update-ca-certificates
+            
+- haproxy.cfg 편집
+           
+            $vi /etc/haproxy/haproxy.cfg
+     
+            frontend https_frontend
+            bind *:80
+            bind *:443 ssl crt /etc/ssl/private/server.pem
+            http-request add-header X-Forwarded-Proto https if { ssl_fc }
+            option httpclose
+            default_backend web_server
+        
+            backend web_server
+            mode http
+            balance roundrobin
+            server web2 10.10.1.15:443 check ssl verify none
+            http-request add-header X-Forwarded-Proto https if { ssl_fc }
+            server s1 10.10.1.15:80 check cookie s1
+            
+- haproxy.cfg 파일에 오류가 있는지 확인
+
+            $ sudo haproxy -f /etc/haproxy/haproxy.cfg -c
+            $ sudo service haproxy restart
+            
+            
+- 접속 
+               
+           https://101.55.50.205
