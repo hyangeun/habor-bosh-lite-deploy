@@ -215,18 +215,33 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
             $vi /etc/haproxy/haproxy.cfg
      
             frontend https_frontend
-            bind *:80
-            bind *:443 ssl crt /etc/ssl/private/server.pem
-            http-request add-header X-Forwarded-Proto https if { ssl_fc }
-            option httpclose
-            default_backend web_server
+                     bind *:80
+                     bind *:443 ssl crt /etc/ssl/private/server.pem
+                     http-request add-header X-Forwarded-Proto https if { ssl_fc }
+                     option httpclose
+                     default_backend web_server
+            
+            frontend https_frontend2
+                     bind *:5000
+                     bind *:443 ssl crt /etc/ssl/private/server.pem
+                     http-request add-header X-Forwarded-Proto https if { ssl_fc }
+                     option httpclose
+                     default_backend web_server2
         
             backend web_server
-            mode http
-            balance roundrobin
-            server web2 10.10.1.15:443 check ssl verify none
-            http-request add-header X-Forwarded-Proto https if { ssl_fc }
-            server s1 10.10.1.15:80 check cookie s1
+                     mode http
+                     balance roundrobin
+                     server web2 10.10.1.15:443 check ssl verify none
+                     http-request add-header X-Forwarded-Proto https if { ssl_fc }
+                     server s1 10.10.1.15:80 check cookie s1
+            
+            backend web_server2
+                     mode http
+                     balance roundrobin
+                     server web2 10.10.1.15:443 check ssl verify none
+                     http-request add-header X-Forwarded-Proto https if { ssl_fc }
+                     server s1 10.10.1.15:5000 check cookie s1
+            
             
 - haproxy.cfg 파일에 오류가 있는지 확인
 
