@@ -99,61 +99,66 @@ Harbor는 여러 Docker 컨테이너로 배포되므로 Docker를 지원하는 �
 
 # <div id='3'/> 3. Prerequisites softwares
 
-1. ##### Pythone 설치
+##### 1. Pythone 설치
 
-   ```
-   $ sudo add-apt-repository ppa:jonathonf/python-3.6
-   $ sudo apt-get update
-   $ sudo apt-get install python3.6
-   ```
+```
+$ sudo add-apt-repository ppa:jonathonf/python-3.6
+$ sudo apt-get update
+$ sudo apt-get install python3.6
+```
 
-2. ##### Docker engine 설치
 
-   ###### Step 1 - Installing Docker
 
-   ```
-   $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-   $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu   $(lsb_release -cs) stable"
-   $ sudo apt-get update
-   $ apt-cache policy docker-ce
-   $ sudo apt-get install -y docker-ce
-   $ sudo systemctl status docker
-   
-   $ sudo systemctl status docker
-   
-   ```
+##### 2. Docker engine 설치
 
-   ```
-   Output
-   ● docker.service - Docker Application Container Engine
-      Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-      Active: active (running) since Thu 2018-10-18 20:28:23 UTC; 35s ago
-        Docs: https://docs.docker.com
-    Main PID: 13412 (dockerd)
-      CGroup: /system.slice/docker.service
-              ├─13412 /usr/bin/dockerd -H fd://
-              └─13421 docker-containerd --config /var/run/docker/containerd/containerd.toml
-   ```
+###### Step 1 - Installing Docker
 
-   ###### Step 2 - Executing the Docker Command Without Sudo
+```
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu   $(lsb_release -cs) stable"
+$ sudo apt-get update
+$ apt-cache policy docker-ce
+$ sudo apt-get install -y docker-ce
+$ sudo systemctl status docker
 
-   ```
-   $ sudo usermod -aG  docker ${USER}
-   $ su - ${USER}
-   $ id -nG
-   $ sudo usermod -aG docker ${USER}
-   ```
+$ sudo systemctl status docker
 
-3. ##### Docker Compose 설치
+```
 
-   ```
-   $ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-   
-   $ sudo chmod +x /usr/local/bin/docker-compose
-   
-   $ docker-compose --version
-     docker-compose version 1.23.1, build 1719ceb
-   ```
+```
+Output
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2018-10-18 20:28:23 UTC; 35s ago
+     Docs: https://docs.docker.com
+ Main PID: 13412 (dockerd)
+   CGroup: /system.slice/docker.service
+           ├─13412 /usr/bin/dockerd -H fd://
+           └─13421 docker-containerd --config /var/run/docker/containerd/containerd.toml
+```
+
+###### Step 2 - Executing the Docker Command Without Sudo
+
+```
+$ sudo usermod -aG  docker ${USER}
+$ su - ${USER}
+$ id -nG
+$ sudo usermod -aG docker ${USER}
+```
+
+
+
+##### 3. Docker Compose 설치
+
+```
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+
+$ docker-compose --version
+  docker-compose version 1.23.1, build 1719ceb
+```
+
 
 
 
