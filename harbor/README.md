@@ -138,8 +138,26 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
   - 구성 및 설정 
 
     - Docker에 대한 서버 인증서, 키 및 CA 구성
-            
-            $ openssl x509 -inform PEM -in yourdomain.com.csr -out yourdomain.com.crt
+            $ cat > v3.ext <<-EOF
+              authorityKeyIdentifier=keyid,issuer
+              basicConstraints=CA:FALSE
+              keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+              extendedKeyUsage = serverAuth 
+              subjectAltName = @alt_names
+              
+              [alt_names]
+              DNS.1=yourdomain.com
+              DNS.2=yourdomain
+              DNS.3=hostname
+              EOF
+              
+              $ openssl x509 -req -sha512 -days 3650 \
+                -extfile v3.ext \
+                -CA ca.crt -CAkey ca.key -CAcreateserial \
+                -in yourdomain.com.csr \
+                -out yourdomain.com.crt
+
+             $ openssl x509 -inform PEM -in yourdomain.com.csr -out yourdomain.com.crt
       
     - Docker 용 yourdomain.com.crt, yourdomain.com.key 및 ca.crt를 배포합니다.
       
