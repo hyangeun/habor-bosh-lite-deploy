@@ -135,20 +135,15 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
                 -key yourdomain.com.key \
                 -out yourdomain.com.csr 
                 
-  - 구성 및 설치
-   
-    - Harbor에 대한 서버 인증서 및 키 구성
-       
-            $ cp yourdomain.com.crt /data/cert/
-            $ cp yourdomain.com.key /data/cert/ 
+  - 구성 및 설정 
 
     - Docker에 대한 서버 인증서, 키 및 CA 구성
             
-            $ openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
+            $ openssl x509 -inform PEM -in yourdomain.com.csr -out yourdomain.com.crt
       
-    - Docker 용 yourdomain.com.cert, yourdomain.com.key 및 ca.crt를 배포합니다.
+    - Docker 용 yourdomain.com.crt, yourdomain.com.key 및 ca.crt를 배포합니다.
       
-            $ cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
+            $ cp yourdomain.com.crt /etc/docker/certs.d/yourdomain.com/
             $ cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
             $ cp ca.crt /etc/docker/certs.d/yourdomain.com/
       
