@@ -161,8 +161,6 @@ $ docker-compose --version
 
 
 
-
-
 # <div id='4'/> 4. Installation Steps
 
 설치 단계는 다음과 같이 요약됩니다.
@@ -316,12 +314,13 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
             sudo apt-get -y install haproxy
 
 - harbor에 접속할 인증서 업데이트
-  
-            #harbor/common/config/nginx/cert 위치에 있는 cert키를 복사하여 haproxy를 설정 할 vm에 복사
-            $sudo vi /usr/local/share/ca-certificates/server.crt
-            #haproxy vm에 인증서 업데이트
-            $sudo update-ca-certificates
-        
+
+         #harbor/common/config/nginx/cert 위치에 있는 cert키를 복사하여 haproxy를 설정 할 vm에 복사
+         $sudo vi /usr/local/share/ca-certificates/server.crt
+         
+         #haproxy vm에 인증서 업데이트
+         $sudo update-ca-certificates
+
 - haproxy.cfg 편집
      ​         
          $vi /etc/haproxy/haproxy.cfg
