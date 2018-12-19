@@ -151,13 +151,13 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
               DNS.3=hostname
               EOF
               
-              $ openssl x509 -req -sha512 -days 3650 \
-                -extfile v3.ext \
-                -CA ca.crt -CAkey ca.key -CAcreateserial \
-                -in yourdomain.com.csr \
-                -out yourdomain.com.crt
+            $ openssl x509 -req -sha512 -days 3650 \
+              -extfile v3.ext \
+              -CA ca.crt -CAkey ca.key -CAcreateserial \
+              -in yourdomain.com.csr \
+              -out yourdomain.com.crt
 
-             $ openssl x509 -inform PEM -in yourdomain.com.csr -out yourdomain.com.crt
+            $ openssl x509 -inform PEM -in yourdomain.com.csr -out yourdomain.com.crt
       
     - Docker 용 yourdomain.com.crt, yourdomain.com.key 및 ca.crt를 배포합니다.
       
@@ -194,9 +194,13 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
   
   
 #### 4. Run install.sh to install and start Harbor;  
+ - Finishing installation and starting Harbor
+   
+         $ sudo ./install.sh
+   
  - Generate configuration files for Harbor:
     
-         $ ./prepare
+         $ sudo ./prepare
    
  - If Harbor is already running, stop and remove the existing instance. Your image data remain in the file system
      
