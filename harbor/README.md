@@ -307,11 +307,11 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
       $ docker login yourdomain.com
       ```
 
-#### 5. Set Haproxy
+#### 5. Set HAProxy
 
-- Haproxy 설치
+- HAProxy 설치
   
-            sudo apt-get -y install haproxy
+            $ sudo apt-get -y install haproxy
 
 - harbor에 접속할 인증서 업데이트
 
@@ -323,7 +323,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
 
 - haproxy.cfg 편집
      ​         
-         $vi /etc/haproxy/haproxy.cfg
+         $ vi /etc/haproxy/haproxy.cfg
           
          frontend https_frontend
                   bind *:80
