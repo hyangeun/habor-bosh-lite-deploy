@@ -204,10 +204,10 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
             $ openssl genrsa -out yourdomain.com.key 4096
 
    - Generate a Certificate Signing Request:
-            $ openssl req -sha512 -new \
-                -subj "/C=KR/ST=Seoul/L=Seoul/O=crossent/OU=paasxpert/CN={yourdomain}" \
-                -key yourdomain.com.key \
-                -out yourdomain.com.csr 
+        ​    $ openssl req -sha512 -new \
+        ​        -subj "/C=KR/ST=Seoul/L=Seoul/O=crossent/OU=paasxpert/CN={yourdomain}" \
+        ​        -key yourdomain.com.key \
+        ​        -out yourdomain.com.csr 
 
   - 구성 및 설정 
 
@@ -273,7 +273,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
  - <b>hostname</b> : UI 및 레지스트리 서비스에 액세스하는 데 사용되는 대상 호스트의 호스트 이름입니다. 대상 컴퓨터의 IP 주소 또는 FQDN (정규화 된 도메인 이름)이어야합니다 (예 : 192.168.1.10 또는 reg.yourdomain.com). 호스트 이름에 localhost 또는 127.0.0.1을 사용하지 마십시오. 레지스트리 서비스를 외부 클라이언트가 액세스 할 수 있어야합니다.
 
  - <b>ui_url_protocol</b> : 
-  (http 또는 https, 기본값은 http) UI 및 토큰 / 알림 서비스에 액세스하는 데 사용되는 프로토콜입니다. 인증서를 사용하는 경우 매개 변수는 https 여야합니다. 기본적으로는 http입니다. https 프로토콜을 설정하려면 [Configuring Harbor with HTTPS Access](https://github.com/goharbor/harbor/blob/master/docs/configure_https.md)을 참조하십시오.
+    (http 또는 https, 기본값은 http) UI 및 토큰 / 알림 서비스에 액세스하는 데 사용되는 프로토콜입니다. 인증서를 사용하는 경우 매개 변수는 https 여야합니다. 기본적으로는 http입니다. https 프로토콜을 설정하려면 [Configuring Harbor with HTTPS Access](https://github.com/goharbor/harbor/blob/master/docs/configure_https.md)을 참조하십시오.
   - <b>ssl_cert</b> : SSL 인증서의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
   - <b>ssl_cert_key</b> : SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니다.
 
@@ -333,8 +333,8 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
 
 - haproxy.cfg 편집
      ​         
-         $ vi /etc/haproxy/haproxy.cfg
-          
+     ​    $ vi /etc/haproxy/haproxy.cfg
+     ​     
          frontend https_frontend
                   bind *:80
                   bind *:443 ssl crt /etc/ssl/private/server.pem
@@ -436,10 +436,13 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
 
 
 
-
 # <div id='5'>5. Register docker registry on CF
 
-1.  cf-deployment.yml 수정
+CF에 Docker registry 인증서 및 주소를 추가해야 한다.
+
+
+
+1.  ###### cf-deployment.yml 수정
 
    ```
    $ cd workspace/cf
