@@ -436,13 +436,13 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
 
 
 
+
+
 # <div id='5'>5. Register docker registry on CF
 
 CF에 Docker registry 인증서 및 주소를 추가해야 한다.
 
-
-
-1.  ###### cf-deployment.yml 수정
+#### 1. cf-deployment.yml 수정
 
    ```
    $ cd workspace/cf
