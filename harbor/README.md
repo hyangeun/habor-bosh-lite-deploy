@@ -5,6 +5,7 @@
 2. [Prerequisites for the target host](#3)
 3. [Prerequisites softwares](#3)
 4. [Installation Steps](#4)
+5. [Register Docker Registry on CF](#5)
 
 # <div id='1'/> 1. Offline installer
 Harbor 설치 방법은 online 과 offline 으로 나뉜다.<br>
@@ -269,10 +270,6 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
       ssl_cert_key = /data/cert/yourdomain.com.key  
       ```
 
-
-
-        
-
  - <b>hostname</b> : UI 및 레지스트리 서비스에 액세스하는 데 사용되는 대상 호스트의 호스트 이름입니다. 대상 컴퓨터의 IP 주소 또는 FQDN (정규화 된 도메인 이름)이어야합니다 (예 : 192.168.1.10 또는 reg.yourdomain.com). 호스트 이름에 localhost 또는 127.0.0.1을 사용하지 마십시오. 레지스트리 서비스를 외부 클라이언트가 액세스 할 수 있어야합니다.
 
  - <b>ui_url_protocol</b> : 
@@ -300,26 +297,39 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
       $ docker-compose down -v
       ```
 
- - Finally, restart Harbor:
+ - Restart Harbor:
 
       ```
       $ docker-compose up -d
       $ docker login yourdomain.com
       ```
 
+- Docker registry-insecure 등록
+
+     ```
+     $ sudo vi /etc/docker/daemon.json
+     
+     
+     {"insecure-registries" : [ "10.20.1.7" ]}
+     ```
+
+
 #### 5. Set HAProxy
 
 - HAProxy 설치
-  
-            $ sudo apt-get -y install haproxy
+
+         $ sudo apt-get -y install haproxy
 
 - harbor에 접속할 인증서 업데이트
 
          #harbor/common/config/nginx/cert 위치에 있는 cert키를 복사하여 haproxy를 설정 할 vm에 복사
-         $sudo vi /usr/local/share/ca-certificates/server.crt
+         $ sudo vi /usr/local/share/ca-certificates/server.crt
+         
+         #/etc/ssl/private/server.pem 키 생성(yourdomain.com.crt와 yourdomain.com.key 포함)
+         $ sudo vi /usr/local/private/server.pem
          
          #haproxy vm에 인증서 업데이트
-         $sudo update-ca-certificates
+         $ sudo update-ca-certificates
 
 - haproxy.cfg 편집
      ​         
@@ -362,3 +372,180 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
      ​             
 
          https://101.55.50.205
+
+
+
+#### 6. Harbor REST API via Swagger
+
+- Download *prepare-swagger.sh* and *swagger.yaml* under the *docs* directory to your local Harbor directory, e.g. **~/harbor**.
+
+  ```
+  $ wget https://raw.githubusercontent.com/goharbor/harbor/master/docs/prepare-swagger.sh https://raw.githubusercontent.com/goharbor/harbor/master/docs/swagger.yaml
+  
+  ```
+
+- Edit the script file *prepare-swagger.sh*.
+
+  ```
+  $ vi prepare-swagger.sh
+  ```
+
+- Change the SCHEME to the protocol scheme of your Harbor server.
+
+  ```
+  SCHEME=https
+  SERVER_IP=<HARBOR_SERVER_DOMAIN(HAProxy DOMAIN)>
+  ```
+
+- Change the file mode.
+
+  ```
+  $ chmod +x prepare-swagger.sh
+  ```
+
+- Run the shell script. It downloads a Swagger package and extracts files into the *../static* directory.
+
+  ```
+  $ ./prepare-swagger.sh
+  ```
+
+- Edit the *docker-compose.yml* file under your local Harbor directory.
+
+  ```
+  $ vi docker-compose.yml
+  
+  ...
+  ui:
+    ... 
+    volumes:
+      - ./common/config/ui/app.conf:/etc/core/app.conf:z
+      - ./common/config/ui/private_key.pem:/etc/core/private_key.pem:z
+      - /data/secretkey:/etc/core/key:z
+      - /data/ca_download/:/etc/core/ca/:z
+      ## add two lines as below ##
+      - ../src/ui/static/vendors/swagger-ui-2.1.4/dist:/harbor/static/vendors/swagger
+      - ../src/ui/static/resources/yaml/swagger.yaml:/harbor/static/resources/yaml/swagger.yaml
+      ...
+  ```
+
+- Recreate Harbor containers
+
+  ```
+  $ docker-compose down -v && docker-compose up -d
+  ```
+
+
+
+
+# <div id='5'>5. Register docker registry on CF
+
+1.  cf-deployment.yml 수정
+
+   ```
+   $ cd workspace/cf
+   $ vi cf-deployment/cf-deployment.yml
+   ```
+
+   ```
+   - name: garden
+       properties:
+         garden:
+           insecure_docker_registry_list: ## 추가
+           - 10.20.1.7 ## harbor hostname 추가
+           cleanup_process_dirs_on_wait: true
+           debug_listen_address: 127.0.0.1:17019
+           default_container_grace_time: 0
+           deny_networks:
+           - 0.0.0.0/0
+           destroy_containers_on_start: true
+           network_plugin: /var/vcap/packages/runc-cni/bin/garden-external-networker
+           network_plugin_extra_args:
+           - --configFile=/var/vcap/jobs/garden-cni/config/adapter.json
+           persistent_image_list:
+           - /var/vcap/packages/cflinuxfs2/rootfs.tar
+         grootfs:
+           reserved_space_for_other_jobs_in_mb: 15360
+         logging:
+           format:
+             timestamp: rfc3339
+       release: garden-runc
+   ```
+
+   ```
+    - name: cflinuxfs2-rootfs-setup
+       properties:
+         cflinuxfs2-rootfs:
+           trusted_certs: |+
+           -----BEGIN CERTIFICATE-----
+             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
+             -----END CERTIFICATE-----
+   ```
+
+   ```
+   - name: rep
+       properties:
+         bpm:
+           enabled: true
+         containers:
+           trusted_ca_certificates:
+           - |
+           -----BEGIN CERTIFICATE-----
+             MIIFaDCCA1CgAwIBAgIJAMa2jBtQuR0qMA0GCSqGSIb3DQEBDQUAMGkxCzAJBgNV
+             BAYTAktSMQ4wDAYDVQQIDAVTZW91bDEOMAwGA1UEBwwFU2VvdWwxETAPBgNVBAoM
+             CGNyb3NzZW50MRIwEAYDVQQLDAlwYWFzeHBlcnQxEzARBgNVBAMMCjEwLjEwLjEu
+             MTUwHhcNMTgxMTI4MDgzOTU1WhcNMjgxMTI1MDgzOTU1WjBpMQswCQYDVQQGEwJL
+             UjEOMAwGA1UECAwFU2VvdWwxDjAMBgNVBAcMBVNlb3VsMREwDwYDVQQKDAhjcm9z
+             c2VudDESMBAGA1UECwwJcGFhc3hwZXJ0MRMwEQYDVQQDDAoxMC4xMC4xLjE1MIIC
+             IjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA2Epw50B6jQ5SjwZXcDBuQ9a3
+             c3X9deYE9k8DEThUYoPlgaFXvBEVM5XClKSZfAFMlCtGXrHdiz4XRR1HVfOu+4BE
+             RopCZ9p451nTmumJFoi/Hv5sCNWIimY+/7XXky/fBhARn2VCEwDhAugm1lP11eiW
+             NLqlVPHxw2+hxMk8zELnN5Cg/9pC/aKluqGBmseqyobbPfh7gVof+dVJdFS7ut5c
+             196jQ17ACD35eqkKCX5Vw/OYPqh9IailjZG33E/+ar7yaXxbIFhEnyIKWyDk2kZ5
+             /YcIE57TfBqiRQk6531MRWcdkKksTPi1+jMok8A3ha2h1pMKGFwk7ez9UJr8HPOv
+             qnRBhyJ3cofqs2GKB1jKZ/PV+/kHRZ2Dk2oWcvzOEvrZRRmYqSyk/b5T0/OSYliK
+             gjleF92brh8oJBHJ5MaTMaqTVHJQUcS1YpmkgK1Ktd51FVh9c/hpse/OMWfq8fFu
+             GL2xodCOGi+KmGTcdRIeKsBCbnUXW5jvNJvIka+SPGvjD/q4CZdjE1ZEk1m6korK
+             WXpqzHk90xFO9M5C30uXCRhTkhHm0wFAXJqHy7ZW/+wLSOQCDrGWFqtnITpiamS0
+             33uOXezAS3wsh0iDopTSilpHZBO9G6o0qWUnnP58P2pq4ABtdEvueXvvaI0mhaeI
+             LlGz9fePN8+gcZMJTlkCAwEAAaMTMBEwDwYDVR0RBAgwBocECgoBDzANBgkqhkiG
+             9w0BAQ0FAAOCAgEALOar+4/ou304qewOq0NyNcknr/j8NQj+MTXH+8x2IirO6KU7
+             XGVWmyZvdDgmE1JepcAL6XGI6/9Z4QtvriMs/b/csjiQQxX03rUk0nBljhBgopTg
+             +QkC0j5c/3U95uo9AkFwmXzi3MF9xHOOnPUh5OM43DTux6o13sPd9M5ZNHuCtNrt
+             L4a9GhAsyr+k7xN5cz7eO7rSeSIuvRYnpMe6rqdO/E1xtA7otFdm+9WUPwLIOd7k
+             dmhP4h/WOs5bqKvWUDSVq+Y6OdSrUKtw5XmP6tpr9+PsVIoyC3LEK/JbIu2bEBAG
+             nzjCroKgxQcwQZ2zpjF7qDHc6t653J9g6UFx4r+X+wJSm0KvwttXdf1VjIHsOxsu
+             pcdGsi9BWRxebr5wmA8rWZglS2Bj5nocZLQYQQ9FxBUaT+YY4iP4QiBmB//X/lrY
+             9xbrGENahe0hLhx3SecfAyo38bdETWmPI3p34lMv7lSagz3Tb6hwx1utxv1Ey689
+             VglLtTTLAFtrmsicoX0Wjzfg9Yk18PHH9Og4Iw99yWoSiuSQi3OICu3SdbEX4hff
+             UKxdm6B90F9e82o0+hVwRldlAZ44AJrk08gK0wYZ7QvgSxoWKJYCYxNNXyvXjFeg
+             QfNGGbE4UlHlJT3IJQJaBITkm4SlP0fcFQBGZB5MfXwXw2n6Td79JRMFD8g=
+             -----END CERTIFICATE-----
+   ```
