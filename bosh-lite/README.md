@@ -228,7 +228,7 @@
      
 # <div id='2'/>Step 2: Prepare to install cli for BOSH & CF
 # <div id='2.1'/> 2.1. BOSH CLI 설치 
- 1. Navigate to the [BOSH CLI GitHub release page][https://github.com/cloudfoundry/bosh-cli/releases] and choose the correct download for your operating system.
+ 1. Navigate to the [BOSH CLI GitHub release page](https://github.com/cloudfoundry/bosh-cli/releases) and choose the correct download for your operating system.
  2. Make the bosh binary executable and move the binary to your PATH: 	
     
          $ chmod +x ./bosh
