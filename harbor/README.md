@@ -204,10 +204,10 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
             $ openssl genrsa -out yourdomain.com.key 4096
 
    - Generate a Certificate Signing Request:
-        ​    $ openssl req -sha512 -new \
-        ​        -subj "/C=KR/ST=Seoul/L=Seoul/O=crossent/OU=paasxpert/CN={yourdomain}" \
-        ​        -key yourdomain.com.key \
-        ​        -out yourdomain.com.csr 
+            $ openssl req -sha512 -new \
+                -subj "/C=KR/ST=Seoul/L=Seoul/O=crossent/OU=paasxpert/CN={yourdomain}" \
+                -key yourdomain.com.key \
+                 -out yourdomain.com.csr 
 
   - 구성 및 설정 
 
