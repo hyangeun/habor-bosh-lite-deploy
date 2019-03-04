@@ -394,72 +394,72 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
         $ vi ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-config.yml
          
      
-        vm_types:
-        - name: minimal
-          cloud_properties:
-            instance_type: minimal
-        - name: small
-          cloud_properties:
-            instance_type: small
-        - name: small-highmem
-          cloud_properties:
-            instance_type: small-highmem
-        - name: small-50GB-ephemeral-disk
-          cloud_properties:
-            instance_type: small-50GB-ephemeral-disk
-        - name: small-highmem-100GB-ephemeral-disk
-          cloud_properties:
-            instance_type: small-highmem-100GB-ephemeral-disk
+       vm_types:
+       - name: minimal
+         cloud_properties:
+           instance_type: minimal
+       - name: small
+         cloud_properties:
+           instance_type: small
+       - name: small-highmem
+         cloud_properties:
+           instance_type: small-highmem
+       - name: small-50GB-ephemeral-disk
+         cloud_properties:
+           instance_type: small-50GB-ephemeral-disk
+       - name: small-highmem-100GB-ephemeral-disk
+         cloud_properties:
+           instance_type: small-highmem-100GB-ephemeral-disk
         
-        disk_types:
-        - name: 5GB
-          disk_size: 5000
-        - name: 10GB
-          disk_size: 10000
-        - name: 100GB
-          disk_size: 100000
+       disk_types:
+       - name: 5GB
+         disk_size: 5000
+       - name: 10GB
+         disk_size: 10000
+       - name: 100GB
+         disk_size: 100000
         
-        vm_extensions:
-        - name: 5GB_ephemeral_disk
-        - name: 10GB_ephemeral_disk
-        - name: 50GB_ephemeral_disk
-        - name: 100GB_ephemeral_disk
-        - name: 500GB_ephemeral_disk
-        - name: 1TB_ephemeral_disk
-        - cloud_properties: {}
-          name: cf-haproxy-network-properties
-        - name: ssh-proxy-and-router-lb
-        - name: cf-router-network-properties
-          cloud_properties: {}
-        - name: diego-ssh-proxy-network-properties
-        - name: cf-tcp-router-network-properties
+       vm_extensions:
+       - name: 5GB_ephemeral_disk
+       - name: 10GB_ephemeral_disk
+       - name: 50GB_ephemeral_disk
+       - name: 100GB_ephemeral_disk
+       - name: 500GB_ephemeral_disk
+       - name: 1TB_ephemeral_disk
+       - cloud_properties: {}
+         name: cf-haproxy-network-properties
+       - name: ssh-proxy-and-router-lb
+       - name: cf-router-network-properties
+         cloud_properties: {}
+       - name: diego-ssh-proxy-network-properties
+       - name: cf-tcp-router-network-properties
+       
+       azs:
+       - name: z1
+       - name: z2
+       - name: z3
         
-        azs:
-        - name: z1
-        - name: z2
-        - name: z3
-        
-        networks:
-        - name: floating
-          type: vip
-        - name: default
-          type: manual
-          subnets:
-          - azs: [z1, z2, z3]
-            range: 10.20.3.0/24
-            reserved: [10.20.3.2 - 10.20.3.10]
-            static: [10.20.3.30 - 10.20.3.250]
-            gateway: 10.20.3.1
-            cloud_properties:
-              net_id: 81f3183b-73bd-4bc6-96a4-700c7383b779
-              security_groups: [bosh-security]
-        
-        compilation:
-          workers: 5
-          reuse_compilation_vms: true
-          vm_type: minimal
-          network: default
-          az: z1
+       networks:
+       - name: floating
+         type: vip
+       - name: default
+         type: manual
+         subnets:
+         - azs: [z1, z2, z3]
+           range: 10.20.1.0/24
+           reserved: [10.20.1.2 - 10.20.1.30]
+           static: [10.20.1.35 - 10.20.1.70]
+           gateway: 10.20.1.1
+           cloud_properties:
+             net_id: e183e51c-db39-48fb-b0c2-5e79ce10654d
+             security_groups: [bosh-security]
+       
+       compilation:
+         workers: 5
+         reuse_compilation_vms: true
+         vm_type: minimal
+         network: default
+         az: z1
 
  
   
