@@ -465,7 +465,34 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
   
  - update-cloud-config 명령어 수행
     
-            $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-config.yml
+        $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-config.yml
+	    
+ - cf-deployment 수정
+        $ vi cf-deployment/cf-deployment.yml
+	
+	security_group_definitions:
+		- name: public_networks
+		  rules:
+		  - destination: 0.0.0.0-9.255.255.255
+		    protocol: all
+		  - description: 10.0.0.0-255.255.255.255
+		    protocol: all
+		  - destination: 11.0.0.0-169.253.255.255
+		    protocol: all
+		  - destination: 169.255.0.0-172.15.255.255
+		    protocol: all
+		  - destination: 172.32.0.0-192.167.255.255
+		    protocol: all
+		  - destination: 192.169.0.0-255.255.255.255
+		    protocol: all
+		- name: dns
+		  rules:
+		  - destination: 0.0.0.0/0
+		    ports: '53'
+		    protocol: tcp
+		  - destination: 0.0.0.0/0
+		    ports: '53'
+		    protocol: udp      
      
  - cf deploy
  
