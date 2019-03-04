@@ -386,7 +386,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
  - 스템셀 업로드(ubuntu trusty 3586.40)<br>
    ** 이 때 bosh-lite 주의사항은 Openstack 스템셀이 아닌 Warden (BOSH Lite) 스템셀을 올린다.
     
-        $ bosh -e bosh upload-stemcell --sha1 9aca8b9484e9ca7095077d51d6af129698c9fab1 \
+        $ bosh -e bosh upload-stemcell --sha1 0f3054c9b11436244f9d7f18e35a6045ca178e8f \
                 https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent?v=3586.40
   
  - openstack-cloud-config.yml 생성
