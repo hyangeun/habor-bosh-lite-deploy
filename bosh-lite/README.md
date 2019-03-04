@@ -391,7 +391,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
   
  - openstack-cloud-config.yml 생성
    
-        $ vi ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-cloud.yml
+        $ vi ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-config.yml
          
      
         vm_types:
@@ -430,7 +430,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
           name: cf-haproxy-network-properties
         - name: ssh-proxy-and-router-lb
         - name: cf-router-network-properties
-          cloud_properties:
+          cloud_properties: {}
         - name: diego-ssh-proxy-network-properties
         - name: cf-tcp-router-network-properties
         
@@ -465,7 +465,7 @@ VirtualBox 를 통해 빠르게 bosh-lite 을 설치하실 경우는 https://bos
   
  - update-cloud-config 명령어 수행
     
-            $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-cloud.yml
+            $ bosh -e bosh ucc ~/workspace/cf/cf-deployment/iaas-support/openstack/openstack-cloud-config.yml
      
  - cf deploy
  
