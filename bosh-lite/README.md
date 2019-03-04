@@ -255,8 +255,7 @@
  
          $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
         
-         $ echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/
-	 s.list.d/cloudfoundry-cli.list
+         $ $ echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
         
  2. Update your local package index:
        
