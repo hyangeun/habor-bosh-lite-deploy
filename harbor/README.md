@@ -336,6 +336,7 @@ SSL 키의 경로. 프로토콜이 https로 설정된 경우에만 적용됩니�
      ​         
      ​    $ vi /etc/haproxy/haproxy.cfg
      ​     
+         
          frontend https_frontend
                   bind *:80
                   bind *:443 ssl crt /etc/ssl/private/server.pem
